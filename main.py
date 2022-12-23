@@ -7,12 +7,12 @@ from time import sleep
 from screen_pars import *
 
 ### Creating the game window ###
-screen = t.Screen()
+screen = g.Screen()
 screen.title("BreakOut Game")
 screen.setup(width=WIN_WIDTH, height=WIN_HEIGHT)
 screen.bgcolor("black")
 screen.cv._rootwindow.resizable(False, False)
-screen.tracer(0)  # tracer turned off, screen will not refresh/update untill it is told to.
+screen.tracer(0) 
 
 ### Generating the paddle, ball, wall & ScoreBoard
 scoreboard = ScoreBoard()
@@ -23,11 +23,10 @@ wall = Wall()
 pause = False
 
 
-### end & restart game functions
 def end_game():
     ''' exits game window, triggered on 'n' keypress '''
     if scoreboard.is_over():
-        t.bye()
+        g.bye()
 
 
 def new_game():
@@ -70,8 +69,6 @@ screen.onkeypress(end_game, "N")
 screen.onkeypress(end_game, "n")
 screen.onkeypress(pause_game, "space")
 screen.onkeypress(quit_game, "q")
-
-paddle.ondrag(paddle.mouse_drag)
 
 
 # playing the game
@@ -145,4 +142,4 @@ def play_game():
 
 
 play_game()
-t.done()
+g.done()
