@@ -7,7 +7,7 @@ from time import sleep
 from screen_pars import *
 
 ### Creating the game window ###
-screen = g.Screen()
+screen = t.Screen()
 screen.title("BreakOut Game")
 screen.setup(width=WIN_WIDTH, height=WIN_HEIGHT)
 screen.bgcolor("black")
@@ -26,7 +26,7 @@ pause = False
 def end_game():
     ''' exits game window, triggered on 'n' keypress '''
     if scoreboard.is_over():
-        g.bye()
+        t.bye()
 
 
 def new_game():
@@ -142,4 +142,4 @@ def play_game():
 
 
 play_game()
-g.done()
+t.done()
