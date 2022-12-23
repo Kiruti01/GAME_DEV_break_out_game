@@ -15,9 +15,9 @@ UP_LEFT = 135  # or -225 north west
 DOWN_LEFT = -135  # or 225 south west
 
 
+# initializing Ball object
 class Ball(Turtle):
     def __init__(self):
-        ''' initializing Ball object '''
         super().__init__()
         self.penup()
         self.speed("fastest")
@@ -25,8 +25,8 @@ class Ball(Turtle):
         self.color('white')
         self.reset(0, 1)
 
+#reset ball position & speed 
     def reset(self, x, level):
-        ''' reset ball position & speed '''
         self.head_start()
         self.goto(x, Y_POS)
         if level == 1:
@@ -34,8 +34,9 @@ class Ball(Turtle):
         else:
             self.move_speed *= 0.9
 
+            
+# set random inital ball direction
     def head_start(self):
-        ''' set random inital ball direction '''
         heading = choice([UP_RIGHT, UP_LEFT])
         self.setheading(heading)
 
@@ -43,18 +44,19 @@ class Ball(Turtle):
         ''' move ball '''
         self.fd(STEP)
 
+# bounce ball off of  top wall / paddle middle / bricks
     def bounce_top_bottom(self):
-        ''' bounce ball off of  top wall / paddle middle / bricks '''
         self.setheading(-1 * self.heading())
 
+# bounce ball off of side walls
     def bounce_sides(self):
-        ''' bounce ball off of side walls '''
         self.setheading(180 - self.heading())
 
+        
+# bounce ball off of paddle corners
     def bounce_corners(self):
-        ''' bounce ball off of paddle corners '''
         self.setheading(self.heading() - 180)
 
+# returns ball speed
     def get_speed(self):
-        ''' returns ball speed '''
         return self.move_speed
